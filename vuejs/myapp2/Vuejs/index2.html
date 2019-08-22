@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>Vue.js App</title>
+    <link href="main2.css" rel="stylesheet">
+</head>
+<body>
+        <div id="app">
+            <h1>フォーム入力と同期</h1>
+                <!--この#appの内側にテンプレートを書き込んでいく-->
+                <p>{{ message }}</p>
+                <p>{id名.message = '新しいメッセージ'} で書き換え可能</p>
+                <input v-model="message">
+                <p>v-model:フォームに入力した文字とpタグ要素の文字が同期する</p>
+                <!-- <input v-model.number="count">
+                <p>.numberを付与することで、入力値を数値として受け取ることもできる</p> -->
+            </div>
+    <div id="app1">
+        <h1>条件分岐</h1>
+        <p v-if="show">Hello Vue.js!</p>
+        <p>app1.show=falseを入力すると、画面上のp要素がDOMから取り除かれる</p>
+    </div>
+
+    <div id="app2">
+        <h1>トランジション＆アニメーション</h1>
+        <button v-on:click="show=!show">切り替え</button>
+        <transition>
+            <p v-if="show">Hello Vue.js</p>
+            <!-- showが存在しているときにこの文を表示 -->
+        </transition>
+    </div>
+
+    <script src = "https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src = "main2.js"></script>
+</body>
+</html>

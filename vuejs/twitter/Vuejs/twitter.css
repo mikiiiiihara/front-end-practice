@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+#app{
+    width: 40%;
+    margin:0 auto;
+}
+header{
+    text-align: center;
+    position: relative;
+    border-bottom: solid 2px whitesmoke;
+}
+#circle-pr{
+    width: 36px;
+    height: 36px;
+    background-color: black;
+    border-radius:18px;
+    position: absolute;
+    top: 0;
+    left: 20px;
+}
+
+#addTweet{
+    position: absolute;
+    bottom: 100px;
+}
+#addTweet textarea{
+    width: 400px;
+    padding-bottom: 50px;
+}
+span{
+    color: gray;
+    font-weight: lighter;
+    font-size: 0.8em;
+    margin-left: 10px;
+}
+.each-comment{
+    width: 100%;
+    border-bottom: solid 2px whitesmoke;
+    height: auto;
+}

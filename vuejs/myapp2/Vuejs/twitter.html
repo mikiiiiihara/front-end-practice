@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>第２章</title>
+    <link href="twitter.css" rel="stylesheet">
+</head>
+<body>
+
+            <div id="app">
+                <h1>Twitter</h1>
+                <h3>新しい投稿</h3>
+                <textarea v-model="name"></textarea>
+                <pre>{{ name }}</pre>
+                <button v-on:click="doAdd">ツイート</button>
+                <ul>
+                    <li v-for="(item, index) in list" v-bind:key="item.id">
+                        <h3>みっきー</h3>
+                            <h3>{{ item.id }}月</h3>
+                            <p>{{ item.name }}</p>
+
+                            <!-- 削除ボタンをv-for内に作成 -->
+                    <button class="delete-btn" v-on:click="doRemove(index)">ツイートを削除</button>
+                    </li>
+                </ul>
+            </div>
+
+    <script src = "https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src = "twitter.js"></script>
+</body>
+</html>

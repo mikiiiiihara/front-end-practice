@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>第２章</title>
+    <link href="main2.css" rel="stylesheet">
+</head>
+<body>
+        <div id="app">
+            <h1>オブジェクトや配列要素の表示（Mastache）</h1>
+            <h3>Mastacheは属性に使用することはできない e.g.)value="{{data名}"</h3>
+            <p>{{ message.value }}</p>
+            <p>{{ message.value.length }}</p>
+            <p>{{ list[2] }}</p>
+            <p>{{ list[num] }}</p>
+            </div>
+        <div id="app1">
+                <!-- <input type="text" value="{{ message }}">
+                Error compling template -->
+                <input type="text" v-bind:value="message">
+                <p>属性へのバインドにはv-bindディレクティブを使用</p>
+                <input type="text" :value="message">
+                <p>省略して書いた場合</p>
+        </div>
+        <div id="app2">
+            <!-- DOMのtextContentプロパティにバインド -->
+            <div v-bind:text-content.prop="message">...</div>
+            <!-- DOMのscrollTopプロパティにバインド -->
+            <div v-bind:scroll-top.prop="scroll">...</div>
+        </div>
+        <div id="app3">
+            <p>{{ count }}回クリックしたよ！</p>
+            <button v-on:click="increment">カウントを増やす</button>
+        </div>
+        <div id="app4">
+            <p v-bind:class="{ child:isChild, 'is-active':isActive}">Text</p> 
+            <!-- クラス名で、ハイフン含む場合は二つ目のclassに''をつける -->
+            <p v-bind:style="{color:textColor, backgroundColor:bgColor}">Text</p>
+            <p class="child" v-bind:class="{'is-active':isActive}">Text</p> 
+            <!-- クラス名で、ハイフン含む場合は二つ目のclassに''をつける -->
+            <p style="color:blue" v-bind:style="{ color:textColor }">Text</p>
+            <p>データバインディングをしていないプレーンな属性と併用した場合、描画結果では上書きまたはマージされます。</p>
+            <p>オブジェクトデータを渡すこともできる！</p>
+        </div>
+        <div id="app5">
+            <h1>SVGのデータバインディング</h1>
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <circle cx="100" cy="75" v-bind:r="radius" fill="lightpink"/>
+            </svg>
+            <input type="range" min="0" max="100" v-model="radius">
+        </div>
+
+        <div id="app6">
+            <h1>リストデータの表示と更新</h1>
+            <h3 style="color:blue;">要素を繰り返し描画する</h3>
+            <ul>
+                <li v-for="item in list" v-bind:key="item.id">
+                    ID.{{ item.id }} {{ item.name }} HP.{{ item.hp }}
+                </li>
+        <!-- <li v-for="各要素を代入する変数名 in 繰り返したい配列やオブジェクト"> -->
+            <!-- key名を設定しておくのは、区別のために重要 -->
+            </ul>
+        </div>
+
+        <div id="app7">
+                <h1>繰り返し描画＋α</h1>
+                <h3>hpが３００より大きいモンスターのみ.tuyoiクラスを付与して、さらに「強い！」の文字を表示</h3>
+                <ul>
+                    <li v-for="item in list"
+                        v-bind:key="item.id"
+                        v-bind:class="{ tuyoi: item.hp > 300 }">
+                        ID.{{ item.id }} {{ item.name }} HP.{{ item.hp }}
+                        <span v-if="item.hp > 300">つよい！</span>
+                    </li>
+            <!-- <li v-for="各要素を代入する変数名 in 繰り返したい配列やオブジェクト"> -->
+                <!-- key名を設定しておくのは、区別のために重要 -->
+                </ul>
+                <h3>hpが３００より小さいモンスターのみを表示</h3>
+                <ul>
+                        <li v-for="item in list" v-bind:key="item.id" v-if="item.hp < 300">
+                            ID.{{ item.id }} {{ item.name }} HP.{{ item.hp }}
+                        </li>
+                    </ul>
+                </div>
+            <div id="app8">
+                <h1>リストの更新</h1>
+                <h3>新しい投稿</h3>
+                <h3 v-text="name"></h3>
+                <p id="text_zone" v-cloak>{{ text }}</p>
+                <input v-model　= "name"><br>
+                <button v-on:click="doAdd">ツイート</button>
+                <span v-for="theme in text">{{ theme }}</span><br>
+                <button v-on:click="handleClick">クリック</button>
+                <ul>
+                    <li v-for="(item, index) in list" v-bind:key="item.id" v-if="item.hp">
+                    <!-- v-if="item.hp"で、0になったら表示しない設定 -->
+                    ID.{{ item.id }} {{ item.name }} HP.{{ item.hp }}
+                    <span v-if="item.hp < 50">瀕死！</span>
+                    <!-- ボタンはv-for内に作成 -->
+                    <button v-on:click="doAttack(index)">攻撃する</button>
+
+                            <!-- 削除ボタンをv-for内に作成 -->
+                    <button v-on:click="doRemove(index)">ツイートを削除</button>
+                    </li>
+                </ul>
+            </div>
+
+    <script src = "https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src = "second.js"></script>
+</body>
+</html>

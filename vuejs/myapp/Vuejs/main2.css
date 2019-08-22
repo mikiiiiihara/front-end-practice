@@ -1,0 +1,23 @@
+@charset "UTF-8";
+.v-enter-active, .v-leave-active{
+    transition: opacity 1s;
+    /* 1秒かけて透明になっていく */
+}
+/* opacity:0から１へのフェードイン＆フェードアウト */
+.v-enter, .v-leave-to{
+    opacity:0;
+}
+#app8 input{
+    width: 400px;
+    padding-bottom: 100px;
+}
+[v-cloak] {display: none;}
+@keyframes cloak-in {
+    0% { opacity: 0; }
+}
+#text_zone{
+    animation: cloak-in 1s;
+}
+#text_zone[v-cloak]{
+    opacity: 0;
+}

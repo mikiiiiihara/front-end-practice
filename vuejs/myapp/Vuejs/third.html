@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>第３章</title>
+    <link href="main2.css" rel="stylesheet">
+</head>
+<body>
+        <div id="app">
+            <textarea v-model="message"></textarea>
+            <pre>{{ message }}</pre>
+            </div>
+            <div id="app1"> 
+                <label>
+                    <input type="checkbox" v-model="val" true-value="yes" false-value="no">
+                </label>
+                <p>{{ val }}</p>
+            </div>
+            <div id="app2">
+                    <label><input type="checkbox" v-model="vall" value="A">A</label>
+                    <label><input type="checkbox" v-model="vall" value="B">B</label>
+                    <label><input type="checkbox" v-model="vall" value="C">C</label>
+                    <p>{{ vall }}</p>
+            </div>
+            <div id="app3">
+                    <label><input type="radio" v-model="value" value="A">A</label>
+                    <label><input type="radio" v-model="value" value="B">B</label>
+                    <label><input type="radio" v-model="value" value="C">C</label>
+                    <p>{{ value }}</p>
+            </div>
+            <div id="app4">
+                <select v-model="values">
+                    <option disabled="disabled">選択してください</option>
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                </select>
+            </div>
+
+       
+    <script src = "https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src = "third.js"></script>
+</body>
+</html>
